@@ -2,24 +2,13 @@ package com.ishabaev.reactivetodos.api;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Task {
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-    class Date{
-        @SerializedName("$date")
-        private long date;
+public class Task extends RealmObject {
 
-        public Date(long date){
-            this.date = date;
-        }
-
-        public long getDate() {
-            return date;
-        }
-
-        public void setDate(long date) {
-            this.date = date;
-        }
-    }
+    @PrimaryKey
+    private String mId;
 
     @SerializedName("title")
     private String title;
@@ -98,5 +87,8 @@ public class Task {
         this.checked = checked;
     }
 
+    public void setId(String id){
+        mId = id;
+    }
 
 }

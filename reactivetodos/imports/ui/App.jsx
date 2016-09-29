@@ -60,7 +60,7 @@ class App extends Component {
     const title = this.refs.title11.getValue().trim();
     const content = this.refs.content11.getValue().trim();
     Meteor.call('tasks.insert', title, content);
-    ReactDOM.findDOMNode(this.refs.textInput).value = '';
+    //ReactDOM.findDOMNode(this.refs.textInput).value = '';
     this.setState({
       open: false,
     });
@@ -115,44 +115,9 @@ class App extends Component {
       <div className="container">
 
         <header>
-
-          <h1>Todo List ({this.props.incompleteCount})</h1>
-
-          <label className="hide-completed">
-            <input
-              type="checkbox"
-              readOnly
-              checked={this.state.hideCompleted}
-              onClick={this.toggleHideCompleted.bind(this)}
-            />
-            Hide Completed Tasks
-          </label>
+          <h1>Todo List</h1>
 
           <AccountsUIWrapper />
-
-          <form className="new-task">
-            <input
-              type="text"
-              ref="titleInput"
-              placeholder="Title"
-            />
-          </form>
-
-
-          <form className="new-task">
-            <input
-              type="text"
-              ref="textInput"
-              placeholder="Content"
-            />
-          </form>
-
-          <div className="save-task"
-            onClick={
-              this.handleSubmit.bind(this)
-            }>
-            Save task
-          </div>
 
         </header>
 

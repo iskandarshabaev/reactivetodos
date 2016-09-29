@@ -84,7 +84,6 @@ public class DdpClient {
                 for (DdpConnectListener listener : connectListeners) {
                     listener.onException(e);
                 }
-                Log.e(LOG_TAG, e.getMessage());
                 e.printStackTrace();
                 mConnectionState = ConnectionState.Disconnected;
                 //connect();

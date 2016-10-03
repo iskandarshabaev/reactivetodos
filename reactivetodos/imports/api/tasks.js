@@ -29,7 +29,7 @@ Meteor.methods({
     Tasks.insert({
       title,
       content,
-      createdAt: new Date(),
+      createdAt: new Date().getTime(),
       owner: this.userId,
       username: Meteor.users.findOne(this.userId).username,
     });

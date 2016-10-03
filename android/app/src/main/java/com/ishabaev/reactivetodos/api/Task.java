@@ -17,7 +17,7 @@ public class Task extends RealmObject {
     private String content;
 
     @SerializedName("createdAt")
-    private Date createdAt;
+    private long createdAt;
 
     @SerializedName("owner")
     private String owner;
@@ -48,11 +48,11 @@ public class Task extends RealmObject {
     }
 
     public long getCreatedAt() {
-        return createdAt.getDate();
+        return createdAt;
     }
 
     public void setCreatedAt(long createdAt) {
-        this.createdAt = new Date(createdAt);
+        this.createdAt = createdAt;
     }
 
     public String getOwner() {

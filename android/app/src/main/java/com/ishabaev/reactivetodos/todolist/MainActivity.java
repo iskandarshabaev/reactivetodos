@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import io.realm.Sort;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -58,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initRealmChangeListener() {
         Realm realm = Realm.getDefaultInstance();
-        RealmResults<Task> realmResults = realm.where(Task.class).findAllAsync();
+        RealmResults<Task> realmResults = realm.where(Task.class)
+                .findAllSortedAsync("createdAt", Sort.DESCENDING);
         realmResults.addChangeListener(tasks -> mTaskListAdapter.changeDataSet(tasks));
         mTaskListAdapter.changeDataSet(realmResults);
     }
@@ -67,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         TodoApiImpl todoApi = TodoApiImpl.getInstance();
-        todoApi.connect("192.168.1.5");
+        todoApi.connect("192.168.1.3");
     }
 
     @Override
